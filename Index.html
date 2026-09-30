@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fashion Bloom - Chittoor</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fff5fa;
+            color: #333;
+        }
+
+        /* HEADER */
+
+        header {
+            background-color: #e91e63;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 45px 20px;
+            background-color: #ffe0ec;
+        }
+
+        .hero h2 {
+            color: #d81b60;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            margin-bottom: 20px;
+        }
+
+        /* SEARCH */
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .search-box input {
+            width: 350px;
+            padding: 13px;
+            border: 2px solid #e91e63;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            padding: 13px 20px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background-color: #c2185b;
+        }
+
+        /* RESULT */
+
+        #resultCount {
+            text-align: center;
+            margin: 25px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #d81b60;
+        }
+
+        /* CATEGORIES */
+
+        .categories {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .categories h2 {
+            margin-bottom: 20px;
+        }
+
+        .category-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category {
+            background-color: white;
+            padding: 20px;
+            width: 180px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #ddd;
+            font-size: 18px;
+        }
+
+        /* SERVICES */
+
+        .services {
+            padding: 30px;
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        #serviceContainer {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #ddd;
+        }
+
+        .card h3 {
+            color: #e91e63;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            margin: 8px 0;
+        }
+
+        .details-btn {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .details-btn:hover {
+            background-color: #c2185b;
+        }
+
+        /* POPUP */
+
+        dialog {
+            width: 380px;
+            max-width: 90%;
+            border: none;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        /* X BUTTON */
+
+        .close-x {
+            position: absolute;
+            right: 18px;
+            top: 12px;
+            border: none;
+            background: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .close-x:hover {
+            color: #e91e63;
+        }
+
+        /* POPUP TITLE */
+
+        dialog h2 {
+            color: #e91e63;
+            text-align: center;
+            margin: 10px 0 22px;
+        }
+
+        /* POPUP DETAILS */
+
+        dialog p {
+            text-align: left;
+            margin: 12px 0;
+            font-size: 16px;
+        }
+
+        /* CLOSE BUTTON */
+
+        .close-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 6px;
+            background-color: #e91e63;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .close-btn:hover {
+            background-color: #c2185b;
+        }
+
+        /* CONTACT */
+
+        #contact {
+            text-align: center;
+            padding: 35px;
+        }
+
+        #contact h2 {
+            color: #d81b60;
+            margin-bottom: 15px;
+        }
+
+        #contact p {
+            margin: 8px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background-color: #e91e63;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .search-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-box input {
+                width: 90%;
+            }
+
+            .search-box button {
+                width: 150px;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>🌸 FASHION BLOOM</h1>
+
+        <nav>
+
+            <a href="#">Home</a>
+
+            <a href="#categories">
+                Categories
+            </a>
+
+            <a href="#services">
+                Services
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h2>
+            Find Your Style, Beauty & Fashion
+        </h2>
+
+        <p>
+            Discover fashion and beauty services in Chittoor.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Example: Chittoor salon"
+            >
+
+            <button onclick="searchServices()">
+                Search
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULT COUNT -->
+
+    <div id="resultCount">
+        5 Services Found in Chittoor
+    </div>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="categories" id="categories">
+
+        <h2>Our Categories</h2>
+
+        <div class="category-container">
+
+            <div class="category">
+                💇‍♀️
+                <br>
+                Salons
+            </div>
+
+            <div class="category">
+                👗
+                <br>
+                Boutiques
+            </div>
+
+            <div class="category">
+                💄
+                <br>
+                Beauty Parlours
+            </div>
+
+            <div class="category">
+                🛍️
+                <br>
+                Dress Showrooms
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section class="services" id="services">
+
+        <h2>
+            Chittoor Services
+        </h2>
+
+        <div id="serviceContainer">
+
+
+            <!-- LAKME -->
+
+            <div
+                class="card service-card"
+                data-city="chittoor"
+                data-type="salon"
+                data-name="Lakme Salon"
+            >
+
+                <h3>
+                    💇 Lakme Salon
+                </h3>
+
+                <p>
+                    📍 Chittoor
+                </p>
+
+                <p>
+                    ⏰ 9:30 AM – 8 PM
+                </p>
+
+                <p>
+                    💇 Haircut, Facial, Makeup
+                </p>
+
+                <p>
+                    ⭐ 4.9 / 5
+                </p>
+
+                <p>
+                    💰 ₹300 – ₹2000
+                </p>
+
+                <button
+                    class="details-btn"
+                    onclick="openDetails('Lakme Salon')"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+
+            <!-- STYLE SALON -->
+
+            <div
+                class="card service-card"
+                data-city="chittoor"
+                data-type="salon"
+                data-name="Style Unisex Salon"
+            >
+
+                <h3>
+                    💇 Style Unisex Salon
+                </h3>
+
+                <p>
+                    📍 Chittoor
+                </p>
+
+                <p>
+                    ⏰ 10 AM – 8 PM
+                </p>
+
+                <p>
+                    💇 Haircut, Hair Spa, Hair Colour
+                </p>
+
+                <p>
+                    ⭐ 4.7 / 5
+                </p>
+
+                <p>
+                    💰 ₹250 – ₹1800
+                </p>
+
+                <button
+                    class="details-btn"
+                    onclick="openDetails('Style Unisex Salon')"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+
+            <!-- BEAUTY PARLOUR -->
+
+            <div
+                class="card service-card"
+                data-city="chittoor"
+                data-type="beauty"
+                data-name="Glow Beauty Parlour"
+            >
+
+                <h3>
+                    💄 Glow Beauty Parlour
+                </h3>
+
+                <p>
+                    📍 Chittoor
+                </p>
+
+                <p>
+                    ⏰ 9 AM – 8 PM
+                </p>
+
+                <p>
+                    💄 Facial, Makeup, Threading
+                </p>
+
+                <p>
+                    ⭐ 4.6 / 5
+                </p>
+
+                <p>
+                    💰 ₹200 – ₹1500
+                </p>
+
+                <button
+                    class="details-btn"
+                    onclick="openDetails('Glow Beauty Parlour')"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+
+            <!-- BOUTIQUE -->
+
+            <div
+                class="card service-card"
+                data-city="chittoor"
+                data-type="boutique"
+                data-name="Fashion Boutique"
+            >
+
+                <h3>
+                    👗 Fashion Boutique
+                </h3>
+
+                <p>
+                    📍 Chittoor
+                </p>
+
+                <p>
+                    ⏰ 10 AM – 8 PM
+                </p>
+
+                <p>
+                    👗 Dresses, Stitching, Accessories
+                </p>
+
+                <p>
+                    ⭐ 4.5 / 5
+                </p>
+
+                <p>
+                    💰 ₹500 – ₹5000
+                </p>
+
+                <button
+                    class="details-btn"
+                    onclick="openDetails('Fashion Boutique')"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+
+            <!-- DRESS SHOWROOM -->
+
+            <div
+                class="card service-card"
+                data-city="chittoor"
+                data-type="showroom"
+                data-name="Style Dress Showroom"
+            >
+
+                <h3>
+                    🛍️ Style Dress Showroom
+                </h3>
+
+                <p>
+                    📍 Chittoor
+                </p>
+
+                <p>
+                    ⏰ 10 AM – 9 PM
+                </p>
+
+                <p>
+                    👗 Traditional & Modern Wear
+                </p>
+
+                <p>
+                    ⭐ 4.6 / 5
+                </p>
+
+                <p>
+                    💰 ₹800 – ₹8000
+                </p>
+
+                <button
+                    class="details-btn"
+                    onclick="openDetails('Style Dress Showroom')"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- DETAILS POPUP -->
+
+    <dialog id="detailsDialog">
+
+        <!-- X -->
+
+        <button
+            class="close-x"
+            onclick="closeDetails()"
+        >
+            ×
+        </button>
+
+
+        <h2 id="detailsName">
+            Lakme Salon
+        </h2>
+
+
+        <p id="detailsLocation">
+            📍 Location: Chittoor
+        </p>
+
+
+        <p id="detailsTiming">
+            ⏰ Timings: 9:30 AM – 8 PM
+        </p>
+
+
+        <p id="detailsServices">
+            💇 Services: Haircut, Facial, Makeup
+        </p>
+
+
+        <p id="detailsRating">
+            ⭐ Rating: 4.9 / 5
+        </p>
+
+
+        <p id="detailsPrice">
+            💰 Price: ₹300 – ₹2000
+        </p>
+
+
+        <p id="detailsContact">
+            📞 Contact: 9876543210
+        </p>
+
+
+        <button
+            class="close-btn"
+            onclick="closeDetails()"
+        >
+            Close
+        </button>
+
+    </dialog>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h2>
+            Contact Fashion Bloom
+        </h2>
+
+        <p>
+            📍 Chittoor
+        </p>
+
+        <p>
+            📞 9876543210
+        </p>
+
+        <p>
+            📧 fashionbloom@example.com
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Fashion Bloom | Discover Your Style 🌸
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        /* SEARCH */
+
+        function searchServices() {
+
+            let input =
+                document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+            let words =
+                input.split(/\s+/);
+
+
+            let cards =
+                document.querySelectorAll(
+                    ".service-card"
+                );
+
+
+            let count = 0;
+
+
+            cards.forEach(function(card) {
+
+                let city =
+                    card
+                    .getAttribute("data-city")
+                    .toLowerCase();
+
+
+                let type =
+                    card
+                    .getAttribute("data-type")
+                    .toLowerCase();
+
+
+                let name =
+                    card
+                    .getAttribute("data-name")
+                    .toLowerCase();
+
+
+                let text =
+                    city + " " +
+                    type + " " +
+                    name;
+
+
+                let match = true;
+
+
+                if (input !== "") {
+
+                    words.forEach(function(word) {
+
+                        if (!text.includes(word)) {
+
+                            match = false;
+
+                        }
+
+                    });
+
+                }
+
+
+                if (match) {
+
+                    card.style.display = "block";
+
+                    count++;
+
+                }
+
+                else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            document
+            .getElementById("resultCount")
+            .innerText =
+                count +
+                " Services Found in Chittoor";
+
+        }
+
+
+        /* ENTER KEY SEARCH */
+
+        document
+        .getElementById("searchInput")
+        .addEventListener(
+            "keypress",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    searchServices();
+
+                }
+
+            }
+        );
+
+
+        /* DETAILS DATA */
+
+        const services = {
+
+            "Lakme Salon": {
+
+                location:
+                    "📍 Location: Chittoor",
+
+                timing:
+                    "⏰ Timings: 9:30 AM – 8 PM",
+
+                service:
+                    "💇 Services: Haircut, Facial, Makeup",
+
+                rating:
+                    "⭐ Rating: 4.9 / 5",
+
+                price:
+                    "💰 Price: ₹300 – ₹2000",
+
+                contact:
+                    "📞 Contact: 9876543210"
+
+            },
+
+
+            "Style Unisex Salon": {
+
+                location:
+                    "📍 Location: Chittoor",
+
+                timing:
+                    "⏰ Timings: 10 AM – 8 PM",
+
+                service:
+                    "💇 Services: Haircut, Hair Spa, Hair Colour",
+
+                rating:
+                    "⭐ Rating: 4.7 / 5",
+
+                price:
+                    "💰 Price: ₹250 – ₹1800",
+
+                contact:
+                    "📞 Contact: 9876543211"
+
+            },
+
+
+            "Glow Beauty Parlour": {
+
+                location:
+                    "📍 Location: Chittoor",
+
+                timing:
+                    "⏰ Timings: 9 AM – 8 PM",
+
+                service:
+                    "💄 Services: Facial, Makeup, Threading",
+
+                rating:
+                    "⭐ Rating: 4.6 / 5",
+
+                price:
+                    "💰 Price: ₹200 – ₹1500",
+
+                contact:
+                    "📞 Contact: 9876543212"
+
+            },
+
+
+            "Fashion Boutique": {
+
+                location:
+                    "📍 Location: Chittoor",
+
+                timing:
+                    "⏰ Timings: 10 AM – 8 PM",
+
+                service:
+                    "👗 Services: Dresses, Stitching, Accessories",
+
+                rating:
+                    "⭐ Rating: 4.5 / 5",
+
+                price:
+                    "💰 Price: ₹500 – ₹5000",
+
+                contact:
+                    "📞 Contact: 9876543213"
+
+            },
+
+
+            "Style Dress Showroom": {
+
+                location:
+                    "📍 Location: Chittoor",
+
+                timing:
+                    "⏰ Timings: 10 AM – 9 PM",
+
+                service:
+                    "👗 Services: Traditional & Modern Wear",
+
+                rating:
+                    "⭐ Rating: 4.6 / 5",
+
+                price:
+                    "💰 Price: ₹800 – ₹8000",
+
+                contact:
+                    "📞 Contact: 9876543214"
+
+            }
+
+        };
+
+
+        /* OPEN DETAILS */
+
+        function openDetails(name) {
+
+            let service =
+                services[name];
+
+
+            document
+            .getElementById("detailsName")
+            .innerText = name;
+
+
+            document
+            .getElementById("detailsLocation")
+            .innerText =
+                service.location;
+
+
+            document
+            .getElementById("detailsTiming")
+            .innerText =
+                service.timing;
+
+
+            document
+            .getElementById("detailsServices")
+            .innerText =
+                service.service;
+
+
+            document
+            .getElementById("detailsRating")
+            .innerText =
+                service.rating;
+
+
+            document
+            .getElementById("detailsPrice")
+            .innerText =
+                service.price;
+
+
+            document
+            .getElementById("detailsContact")
+            .innerText =
+                service.contact;
+
+
+            document
+            .getElementById("detailsDialog")
+            .showModal();
+
+        }
+
+
+        /* CLOSE DETAILS */
+
+        function closeDetails() {
+
+            document
+            .getElementById("detailsDialog")
+            .close();
+
+        }
+
+    </script>
+
+</body>
+
+</html>
